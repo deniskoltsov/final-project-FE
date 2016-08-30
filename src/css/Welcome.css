@@ -1,0 +1,29 @@
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  color: #2A2C2B;
+  font-size: 2em;
+  margin: 1%;
+}
+
+h2 span {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+h5 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  color: gray;
+  font-size: 1.2em;
+  margin: 1%;
+}
+
+.subhead {
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 1%;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}

@@ -1,0 +1,8 @@
+.main-container {
+  border: 2px dotted crimson;
+}
+
+.filter-options {
+  border: 2px dotted dodgerblue;
+  height: 100px;
+}

@@ -3,13 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
+    "json-loader": "^0.5.4",
     "react-scripts": "0.2.3"
   },
   "dependencies": {
+    "axios": "^0.14.0",
     "material-ui": "^0.15.4",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "react-router": "^2.7.0"
+    "react-router": "^2.7.0",
+    "react-slick": "^0.13.3"
   },
   "scripts": {
     "start": "react-scripts start",
