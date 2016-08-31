@@ -21,6 +21,9 @@
 .sign-in-button {
   width: 125px !important;
 }
+.my-profile-button {
+  width: 165px !important;
+}
 .logo {
   margin: 1%;
   height: 100px;
@@ -69,11 +72,23 @@
 }
 .submit-button:hover {
   background-color: #8D5C76 !important;
-  color: white;
+  color: #ECDD12;
 }
 .modal-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   align-content: space-between;
+}
+.username {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  color: gray;
+  font-weight: 200;
+  margin: 1%;
+  padding: 1%;
+  text-transform: uppercase;
+  width: 200px;
 }

@@ -1,0 +1,31 @@
+.delete-button:hover {
+  background-color: crimson !important;
+  border: 2px solid crimson !important;
+}
+.close-button-container {
+  float: right;
+}
+.dont-show {
+  display: none;
+}
+.show {
+  width: 85%;
+  margin: 0 auto;
+  padding: 2%;
+  border: 1px solid #8D5C76;
+  border-radius: 10px;
+}
+.row-profile {
+  margin: .5%;
+  display: flex;
+}
+.input-profile {
+  width: 100%;
+  flex-flow: row;
+  text-align: left;
+  margin-top: .5% !important;
+  margin-bottom: .5% !important;
+  margin-left: 1% !important;
+  margin-right: 1% !important;
+  /*padding: 1% !important;*/
+}

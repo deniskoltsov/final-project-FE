@@ -11,30 +11,27 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: "hello",
       showResults: true,
-      modalIsOpen: false,
+      signUpModalOpen: false,
+      signInModalOpen: false,
       firstname: '',
       lastname: '',
-      username: '',
       password: '',
+      username: '',
+      address: '',
       phone: '',
       email: '',
-      address: '902 broadway',
       city: '',
       state: '',
-      zipcode: '10010',
-      userId: '',
+      zipcode: '',
       userSignedIn: false,
-      userObj: {},
-      restaurantsArr: []
+      userObj: {}
     }
   }
 
   onClickSignUp(event) {
-    event.preventDefault();
-    this.setState({showResults: false});
-    this.setState({modalIsOpen: false});
+    // event.preventDefault();
+    this.setState({signUpModalOpen: false});
 
     const dataObj = {
       username: this.state.username,
@@ -49,9 +46,9 @@ class App extends Component {
       zipcode: this.state.zipcode
     };
     util.createUser(dataObj).then((response) => {
-      this.setState({userObj: response.data});
-      this.setState({userId: response.data.id})
-      console.log("USER ID:", this.state.userId);
+      this.setState({showResults: false});
+      this.setState({userSignedIn: true});
+      this.setState({userObj: response.data});  
       console.log('response:', this.state.userObj);
     });
   }
@@ -88,19 +85,43 @@ class App extends Component {
   }
 
   openSignUpModal(event) {
-    this.setState({modalIsOpen: true});
+    this.setState({signUpModalOpen: true});
   }
   afterOpenSignUpModal() {
     // references are now sync'd and can be accessed.
     console.log("modal opened");
   }
   closeSignUpModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({signUpModalOpen: false});
+  }
+
+  openSignInModal(event) {
+    this.setState({signInModalOpen: true});
+  }
+  closeSignInModal() {
+    this.setState({signInModalOpen: false});
   }
 
   testClick() {
     this.setState({userSignedIn: true});
     this.setState({showResults: false});
+  }
+
+  onClickSignIn(event) {
+    let username = this.state.username;
+    let password = this.state.password;
+    util.signIn(username, password).then((response) => {
+      if (response.data.length) {
+        this.setState({userObj: response.data});
+        this.setState({showResults: false});
+        this.setState({userSignedIn: true});
+      }
+      else {
+        this.setState({signInModalOpen: true});
+        console.log("sorry wrong shit");
+      }
+      console.log('userObj:', this.state.userObj);
+    });
   }
 
   render() {
@@ -118,21 +139,9 @@ class App extends Component {
     const childrenWithProps = React.Children.map(this.props.children, (child) => React.cloneElement(child, {
       response: this.state.response,
       showResults: this.state.showResults,
-      modalIsOpen: this.state.modalIsOpen,
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
-      username: this.state.username,
-      password: this.state.password,
-      phone: this.state.phone,
-      email: this.state.email,
-      address: this.state.address,
-      city: this.state.city,
-      state: this.state.state,
-      zipcode: this.state.zipcode,
-      userId: this.state.userId,
+      signUpModalOpen: this.state.signUpModalOpen,
       userSignedIn: this.state.userSignedIn,
-      userObj: this.state.userObj,
-      restaurantsArr: this.state.restaurantsArr
+      userObj: this.state.userObj
     }));
 
     return (
@@ -143,27 +152,32 @@ class App extends Component {
             <img className='nav-logo' src="src/assets/FOODLIB_logo.png" alt="logo"/>
             </Link>
           </div>
-          {this.state.userSignedIn ? <div className='nav-item'> <p>{this.state.username}</p> </div> :
+          {this.state.userSignedIn ?
             <div className='nav-item'>
-              <input className='nav-input' placeholder='Username' onChange={(event) => this.loginUsername(event)}/>
-              <input className='nav-input' placeholder='Password' onChange={(event) => this.loginPassword(event)}/>
+              <p className="username">Welcome, {this.state.userObj[0].firstname}</p>
+                <Link to='/myprofile' className='my-profile-button submit-button btn-flat'>My Profile</Link>
+            </div> :
+            <div className='nav-item'>
+              <input className='nav-input' placeholder='Username' onChange={(event) => this.handleChangeUsername(event)}/>
+              <input className='nav-input' type="password" placeholder='Password' onChange={(event) => this.handleChangePassword(event)}/>
               <Link onClick={(event) => this.onClickSignIn(event)} to='/main' className='sign-in-button submit-button btn-flat' type="submit">Sign In</Link>
             </div>
           }
         </div>
         {this.state.showResults ? <Header /> : null}
-        <div>
-          <img className='logo' src="src/assets/FOODLIB_logo.png" alt="logo"/>
-        </div>
+        <div><img className='logo' src="src/assets/FOODLIB_logo.png" alt="logo"/></div>
         {this.state.showResults ? <Welcome/> : null}
+        {this.state.showResults ? <button className='submit-button btn-flat' onClick={(event) => this.openSignUpModal(event)}>Sign Up</button> : null}
 
-        <button className='submit-button btn-flat' onClick={(event) => this.openSignUpModal(event)}>Sign Up</button>
-        <Link onClick={(event) => this.testClick(event)} to='/main' className='submit-button btn-flat' type="submit">test</Link>
-
-        <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenSignUpModal} onRequestClose={this.closeSingUpModal} style={customStyles}>
+        <Modal isOpen={this.state.signInModalOpen} onRequestClose={this.closeSingInModal} style={customStyles}>
+            <div className="modal-container">
+              <h2 ref="subtitle">Sorry, looks like you entered an incorrect username/password.</h2>
+              <button className='submit-button btn-flat' onClick={(event) => this.closeSignInModal(event)}>x</button>
+            </div>
+          </Modal>
+        <Modal isOpen={this.state.signUpModalOpen} onAfterOpen={this.afterOpenSignUpModal} onRequestClose={this.closeSingUpModal} style={customStyles}>
           <div className="modal-container">
-            <h2 ref="subtitle">Hello</h2>
-            <div>I am a modal</div>
+            <h2 ref="subtitle">Hey there, sign up and get to FoodLibbin.</h2>
             <button className='submit-button btn-flat' onClick={(event) => this.closeSignUpModal(event)}>x</button>
           </div>
           <form>
