@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 import util from './utils/helpers.js';
+import {Link} from 'react-router';
 import './css/MyProfile.css';
 
 class MyProfile extends Component {
@@ -140,6 +141,7 @@ class MyProfile extends Component {
         <h4>{this.props.userObj[0].firstname}s profile page</h4>
 
       <button onClick={(event) => this.onClickEditProfile(event)} className='submit-button btn-flat' type="submit">Edit</button>
+      <Link to='/main' className='submit-button btn-flat' type="submit">Go Back</Link>
 
       <div className={this.state.profile}>
         <form>

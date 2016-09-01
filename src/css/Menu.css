@@ -1,0 +1,15 @@
+.map {
+  width: 400px;
+  height: 200px;
+}
+.row {
+  width: 100%;
+}
+.items-container {
+  margin: 2%;
+  padding: 2%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}

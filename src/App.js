@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   onClickSignUp(event) {
-    // event.preventDefault();
+    event.preventDefault();
     this.setState({signUpModalOpen: false});
 
     const dataObj = {
@@ -45,12 +45,14 @@ class App extends Component {
       state: this.state.state,
       zipcode: this.state.zipcode
     };
+    console.log('1 USERNAME', this.state.username);
     util.createUser(dataObj).then((response) => {
       this.setState({showResults: false});
       this.setState({userSignedIn: true});
-      this.setState({userObj: response.data});  
-      console.log('response:', this.state.userObj);
+      this.setState({userObj: response.data});
     });
+    console.log('2 userObj:', this.state.userObj);
+    console.log('3 USERNAME FROM OBJECT', this.state.userObj.username);
   }
 
   handleChangeFirstName(event) {
@@ -100,12 +102,7 @@ class App extends Component {
   }
   closeSignInModal() {
     this.setState({signInModalOpen: false});
-  }
-
-  testClick() {
-    this.setState({userSignedIn: true});
-    this.setState({showResults: false});
-  }
+  }xw
 
   onClickSignIn(event) {
     let username = this.state.username;
@@ -155,6 +152,7 @@ class App extends Component {
           {this.state.userSignedIn ?
             <div className='nav-item'>
               <p className="username">Welcome, {this.state.userObj[0].firstname}</p>
+                <Link to='/' className='submit-button btn-flat' onClick={(event) => this.backToHome(event)}>Logout</Link>
                 <Link to='/myprofile' className='my-profile-button submit-button btn-flat'>My Profile</Link>
             </div> :
             <div className='nav-item'>

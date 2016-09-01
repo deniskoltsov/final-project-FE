@@ -65,4 +65,21 @@ export default {
       return res
     })
   },
+  saveItem: function (dataObj) {
+    const axiosSettings = {
+      method: 'POST',
+      restaurantName: dataObj.restaurantName,
+      street: dataObj.street,
+      city: dataObj.city,
+      state: dataObj.state,
+      zip: dataObj.zip,
+      phone: dataObj.phone,
+      itemName: dataObj.itemName,
+      price: dataObj.price,
+      description: dataObj.description
+    }
+    return axios.post('http://localhost:3000/favorites/new', axiosSettings).then(res => {
+      return res
+    })
+  },
 }

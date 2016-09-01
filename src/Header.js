@@ -7,13 +7,12 @@ class Header extends Component {
   render() {
     const sliderSettings = {
       autoplay: true,
-      dots: true,
+      dots: false,
       infinite: true,
       speed: 1000,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplaySpeed: 5000,
-      centerMode: true,
       pauseOnHover: true,
       adaptiveHeight: true
       // className: ''
@@ -22,12 +21,13 @@ class Header extends Component {
 
     return (
       <div className="header">
+        <div className="images">
         <Slider {...sliderSettings}>
-          <div><img src='http://placekitten.com/g/1000/150' alt="cat"/></div>
-          <div><img src='http://placekitten.com/g/1000/150' alt="cat"/></div>
-          <div><img src='http://placekitten.com/g/1000/150' alt="cat"/></div>
-          <div><img src='http://placekitten.com/g/1000/150' alt="cat"/></div>
+          <div><img src="src/assets/Food-1.jpg" alt="instructions"/></div>
+          <div><img src='src/assets/Food-2.jpg' alt="instructions"/></div>
+          <div><img src='src/assets/Food-3.jpg' alt="instructions"/></div>
         </Slider>
+        </div>
       </div>
     );
   }

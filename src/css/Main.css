@@ -1,8 +1,19 @@
 .main-container {
-  border: 2px dotted crimson;
+  /*border: 1px dotted crimson;*/
 }
-
-.filter-options {
-  border: 2px dotted dodgerblue;
-  height: 100px;
+.message h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  background-color: #8D5C76;
+  color: #ECDD12;
+  font-size: 1.3em;
+  letter-spacing: 5px;
+  margin: 1%;
+  padding: 2%;
+}
+.message h5 {
+  font-size: 1em;
+  padding: 2%;
+  margin: 1%;
+  border-bottom: 2px dotted #8D5C76;
 }

@@ -1,0 +1,43 @@
+.RestaurantItem {
+  width: 100%;
+}
+.menu-item-container {
+  border: 2px solid white;
+}
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row;
+  margin: 0;
+}
+.menu-row h2 {
+  color: #8D5C76;
+  font-weight: 500;
+  font-size: 1.8em;
+  margin-right: 4%;
+  margin-top: .5%;
+  margin-bottom: .5%;
+}
+.menu-row p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  color: gray;
+  margin: 0;
+}
+.menu-row-alt {
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  margin: 0;
+}
+.menu-row-alt p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  margin-right: 4%;
+  margin-top: .5%;
+  margin-bottom: .5%;
+  color: gray;
+}
