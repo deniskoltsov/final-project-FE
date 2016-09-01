@@ -15,7 +15,7 @@ export default {
       state: dataObj.state,
       zipcode: dataObj.zipcode
     }
-    return axios.post('http://localhost:3000/users/new', axiosSettings).then(res => {
+    return axios.post('https://shrouded-sea-32950.herokuapp.com/users/new', axiosSettings).then(res => {
       return res
     })
   },
@@ -25,7 +25,7 @@ export default {
       address: dataObj.address,
       zipcode: dataObj.zipcode
     }
-    return axios.post('http://localhost:3000/menu', axiosSettings).then(res => {
+    return axios.post('https://shrouded-sea-32950.herokuapp.com/menu', axiosSettings).then(res => {
       return res
     })
   },
@@ -35,7 +35,7 @@ export default {
       username: username,
       password: password
     }
-    return axios.get('http://localhost:3000/users/' + username + '/' + password, axiosSettings).then(res => {
+    return axios.get('https://shrouded-sea-32950.herokuapp.com/users/' + username + '/' + password, axiosSettings).then(res => {
       return res
     })
   },
@@ -52,7 +52,7 @@ export default {
       state: dataObj.state,
       zipcode: dataObj.zipcode
     }
-    return axios.put('http://localhost:3000/users/' + username, axiosSettings).then(res => {
+    return axios.put('https://shrouded-sea-32950.herokuapp.com/users/' + username, axiosSettings).then(res => {
       return res
     })
   },
@@ -61,7 +61,7 @@ export default {
       method: 'DELETE',
       username: username
     }
-    return axios.delete('http://localhost:3000/users/' + username, axiosSettings).then(res => {
+    return axios.delete('https://shrouded-sea-32950.herokuapp.com/users/' + username, axiosSettings).then(res => {
       return res
     })
   },
@@ -79,7 +79,7 @@ export default {
       description: dataObj.description,
       user_id: dataObj.userid
     }
-    return axios.post('http://localhost:3000/favorites/new', axiosSettings).then(res => {
+    return axios.post('https://shrouded-sea-32950.herokuapp.com/favorites/new', axiosSettings).then(res => {
       return res
     })
   },
@@ -89,7 +89,7 @@ export default {
       username: username,
       password: password
     }
-    return axios.get('http://localhost:3000/users/' + username + '/' + password + '/favorites', axiosSettings).then(res => {
+    return axios.get('https://shrouded-sea-32950.herokuapp.com/users/' + username + '/' + password + '/favorites', axiosSettings).then(res => {
       return res
     })
   },
@@ -98,7 +98,7 @@ export default {
       method: 'DELETE',
       itemname: itemname
     }
-    return axios.delete('http://localhost:3000/favorites/' + itemname, axiosSettings).then(res => {
+    return axios.delete('https://shrouded-sea-32950.herokuapp.com/favorites/' + itemname, axiosSettings).then(res => {
       return res
     })
   },
