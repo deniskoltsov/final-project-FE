@@ -20,7 +20,8 @@ class MyProfile extends Component {
       zipcode: '',
       userId: '',
       ModalOpen: false,
-      userObj: {}
+      userObj: {},
+      userFavorites: []
     }
   }
 
@@ -33,7 +34,7 @@ class MyProfile extends Component {
     this.setState({city: this.props.userObj[0].city});
     this.setState({state: this.props.userObj[0].state});
     this.setState({zipcode: this.props.userObj[0].zipcode});
-    this.setState({userId: this.props.userObj[0].user_id});
+    this.setState({userId: this.props.userObj[0].id});
   }
 
   handleChangeFirstName(event) {
@@ -124,8 +125,20 @@ class MyProfile extends Component {
     }
   }
 
+  onClickGetFavorites(){
+    const username = this.props.userObj[0].username
+    const password = this.props.userObj[0].password
+    util.getFavs(username, password).then((response) => {
+      this.setState({userFavorites: response.data})
+      console.log('FAVORITES:', this.state.userFavorites);
+    });
+  }
 
   render() {
+    const childrenWithProps = React.Children.map(this.props.children, (child) => React.cloneElement(child, {
+      userObj: this.state.userObj,
+      userFavorites: this.state.userFavorites
+    }));
     const customStyles = {
       content: {
         top: '50%',
@@ -139,8 +152,10 @@ class MyProfile extends Component {
     return (
       <div className="MyProfile">
         <h4>{this.props.userObj[0].firstname}s profile page</h4>
-
+        <div>{childrenWithProps}</div>
       <button onClick={(event) => this.onClickEditProfile(event)} className='submit-button btn-flat' type="submit">Edit</button>
+      <Link to='/favorites' onClick={(event) => this.onClickGetFavorites(event)} className='submit-button btn-flat' type="submit">My Favs</Link>
+
       <Link to='/main' className='submit-button btn-flat' type="submit">Go Back</Link>
 
       <div className={this.state.profile}>

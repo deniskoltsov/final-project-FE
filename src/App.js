@@ -48,7 +48,6 @@ class App extends Component {
     console.log('1 USERNAME', this.state.username);
     util.createUser(dataObj).then((response) => {
       this.setState({showResults: false});
-      this.setState({userSignedIn: true});
       this.setState({userObj: response.data});
     });
     console.log('2 userObj:', this.state.userObj);
@@ -102,7 +101,7 @@ class App extends Component {
   }
   closeSignInModal() {
     this.setState({signInModalOpen: false});
-  }xw
+  }
 
   onClickSignIn(event) {
     let username = this.state.username;

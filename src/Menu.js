@@ -51,15 +51,16 @@ class Menu extends Component {
 
   placeOrder(){
     const dataObj = {
-      restaurantName: this.state.currentRestaurant.summary.name,
+      restaurantname: this.state.currentRestaurant.summary.name,
       street: this.state.currentRestaurant.location.street,
       city: this.state.currentRestaurant.location.city,
       state: this.state.currentRestaurant.location.state,
       zip: this.state.currentRestaurant.location.zip,
       phone: this.state.currentRestaurant.summary.phone,
-      itemName: this.state.chosenItem.name,
+      itemname: this.state.chosenItem.name,
       price: this.state.chosenItem.price,
-      description: this.state.chosenItem.description
+      description: this.state.chosenItem.description,
+      userid: this.props.userObj[0].id
     };
     util.saveItem(dataObj).then((response) => {
       console.log(response);
