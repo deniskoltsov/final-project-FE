@@ -23,9 +23,9 @@ class Header extends Component {
       <div className="header">
         <div className="images">
         <Slider {...sliderSettings}>
-          <div><img src="https://imgur.com/V4dbuHy" alt="instructions"/></div>
-          <div><img src='https://imgur.com/IVbu4IS' alt="instructions"/></div>
-          <div><img src='https://imgur.com/Gq2L1xL' alt="instructions"/></div>
+          <div><img src="https://i65.tinypic.com/3344s3c.jpg" alt="instructions"/></div>
+          <div><img src='https://i66.tinypic.com/143kzt4.jpg' alt="instructions"/></div>
+          <div><img src='https://i65.tinypic.com/1zqgdtt.jpg' alt="instructions"/></div>
         </Slider>
         </div>
       </div>
