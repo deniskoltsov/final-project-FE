@@ -145,7 +145,7 @@ class App extends Component {
         <div className="nav-container">
           <div className='nav-item'>
             <Link to='/' onClick={(event) => this.backToHome(event)}>
-            <img className='nav-logo' src="http://imgur.com/a/IxnqU" alt="logo"/>
+            <img className='nav-logo' src="https://imgur.com/a/IxnqU" alt="logo"/>
             </Link>
           </div>
           {this.state.userSignedIn ?
@@ -162,7 +162,7 @@ class App extends Component {
           }
         </div>
         {this.state.showResults ? <Header /> : null}
-        <div><img className='logo' src="http://imgur.com/a/IxnqU" alt="logo"/></div>
+        <div><img className='logo' src="https://imgur.com/a/IxnqU" alt="logo"/></div>
         {this.state.showResults ? <Welcome/> : null}
         {this.state.showResults ? <button className='submit-button btn-flat' onClick={(event) => this.openSignUpModal(event)}>Sign Up</button> : null}
 
